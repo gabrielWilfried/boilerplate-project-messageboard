@@ -19,6 +19,14 @@ app.use(helmet.dnsPrefetchControl({ allow: false }));
 
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
+app.use(helmet.noSniff());
+
+app.use(helmet.xssFilter());
+
+app.use(helmet.noCache());
+
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 7.4.3' }));
+
 app.use('/public', express.static(process.cwd() + '/public'));
 
 app.use(cors({origin: '*'})); //For FCC testing purposes only
